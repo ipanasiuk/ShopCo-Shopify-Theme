@@ -1,0 +1,29 @@
+# Environment Configuration
+.env
+
+# Dependency directory
+node_modules/
+
+# Build artifacts/compiled assets (if you use a build process)
+dist/
+build/
+upload/
+
+# Sensitive configuration file that changes with theme customizer use
+config/settings_data.json
+
+# Log files and temporary files
+*.log
+npm-debug.log
+deploy.log
+
+# Operating System and Editor files
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+.vscode/
+
+# Shopify CLI specific files
+.shopify/
+shopify.theme.toml
