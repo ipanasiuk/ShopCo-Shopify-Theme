@@ -10,7 +10,7 @@ build/
 upload/
 
 # Sensitive configuration file that changes with theme customizer use
-config/settings_data.json
+
 
 # Log files and temporary files
 *.log
