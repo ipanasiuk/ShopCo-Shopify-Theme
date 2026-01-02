@@ -1,0 +1,22 @@
+.container {
+    margin: 0 auto;
+    padding: 0 50px;
+}
+.shopco-announcement-bar {
+    font-size: 18px;
+    line-height: 1;
+    padding: 0;
+    margin: 0;
+}
+.custom-announcement-bar {
+    text-align: center;
+    height: 100%;
+}
+.custom-announcement-bar p {
+    margin: 0;
+}
+@media screen and (min-width: 1500px){
+    .container {
+        width: 1440px;
+    }
+}
