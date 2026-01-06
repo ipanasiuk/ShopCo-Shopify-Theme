@@ -1,10 +1,15 @@
-{% for block in section.blocks %}
-<div class="custom-announcement-bar" style="background-color: {{ block.settings.announcement-bg-color }}; padding: {{ block.settings.ab-padding-top }}px 0 {{ block.settings.ab-padding-bottom }}px 0">
-    <div class="container">        
-        <div class="custom-announcement-bar__text" style="color: {{ block.settings.announcement-text-color }}">{{ block.settings.announcement-text }}</div>  
-    </div>
-</div>
-{% endfor %}
+{%- if section.blocks.size == 1 -%}  
+    {% for block in section.blocks %}    
+            <div class="custom-announcement-bar" style="background-color: {{ block.settings.announcement-bg-color }}; padding: {{ block.settings.ab-padding-top }}px 0 {{ block.settings.ab-padding-bottom }}px 0">
+                <div class="container">                 
+                    <div class="custom-announcement-bar__text" style="color: {{ block.settings.announcement-text-color }}">{{ block.settings.announcement-text }}</div>        
+                </div>
+            </div>  
+    {% endfor %}
+{% endif %}
+{%- if section.blocks.size > 1 -%}  
+    
+{% endif %}
 {% schema %}
 {
     "name": "Custom Announcement Bar",
