@@ -1,0 +1,62 @@
+{%- if section.blocks.size == 1 -%}  
+    {% for block in section.blocks %}    
+            <div class="custom-announcement-bar" style="background-color: {{ block.settings.announcement-bg-color }}; padding: {{ block.settings.ab-padding-top }}px 0 {{ block.settings.ab-padding-bottom }}px 0">
+                <div class="container">                 
+                    <div class="custom-announcement-bar__text" style="color: {{ block.settings.announcement-text-color }}">{{ block.settings.announcement-text }}</div>        
+                </div>
+            </div>  
+    {% endfor %}
+{% endif %}
+{%- if section.blocks.size > 1 -%}  
+    
+{% endif %}
+{% schema %}
+{
+    "name": "Custom Announcement Bar",
+    "class": "shopco-announcement-bar",
+    "max_blocks": 6,
+    "settings": [         
+    ],
+    "blocks": [
+        {
+            "name": "Announcement text",
+            "type": "header",
+            "settings": [
+                {
+                    "id": "announcement-text",
+                    "type": "richtext",
+                    "label": "Announcement Text",                    
+                },
+                {
+                    "id": "announcement-text-color",
+                    "type": "color",
+                    "label": "Announcement Text Color",
+                    "default": "#fff"
+                },
+                {
+                    "id": "announcement-bg-color",
+                    "type": "color",
+                    "label": "Announcement Background Color",
+                    "default": "#000"
+                },
+                {
+                    "id": "ab-padding-top",
+                    "type": "range",
+                    "label": "Announcement Bar Padding Top",
+                    "min":  5,
+                    "max": 45,
+                    "default": 10
+                },
+                {
+                    "id": "ab-padding-bottom",
+                    "type": "range",
+                    "label": "Announcement Bar Padding Bottom",
+                    "min":  5,
+                    "max": 45,
+                    "default": 10
+                }                                    
+            ]
+        }
+    ]
+}    
+{% endschema %}
