@@ -10,19 +10,24 @@
 {
   "sections": {
     "custom-announcement-bar": {
-        "type": "custom-announcement-bar"
+      "type": "custom-announcement-bar",
+      "settings": {}
     },
-     "custom-header": {
-      "type": "custom-header"
+    "custom-header": {
+      "type": "custom-header",
+      "settings": {}
     },
-     "banner": {
-      "type": "image-banner"
+    "banner": {
+      "type": "image-banner",
+      "settings": {}
     },
     "featured_collection": {
-      "type": "featured-collection"
+      "type": "featured-collection",
+      "settings": {}
     },
     "custom-footer": {
-        "type":"custom-footer"
+      "type": "custom-footer",
+      "settings": {}
     }
   },
   "order": [
