@@ -14,13 +14,6 @@
     "custom_announcement": {
       "type": "custom-announcement-bar",
       "blocks": {
-        "announcement_content_rE6qay": {
-          "type": "announcement-content",
-          "settings": {
-            "announcement_text": "<p>Test</p>",
-            "announcement_text_color": "#ffffff"
-          }
-        },
         "announcement_content_jWT6iq": {
           "type": "announcement-content",
           "settings": {
@@ -30,7 +23,6 @@
         }
       },
       "block_order": [
-        "announcement_content_rE6qay",
         "announcement_content_jWT6iq"
       ],
       "settings": {
