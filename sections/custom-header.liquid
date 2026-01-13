@@ -1,26 +1,11 @@
- <link
-  rel="stylesheet"
-  href="{{ 'component-cart-notification.css' | asset_url }}"
-  media="print"
-  onload="this.media='all'"
-> 
-<link rel="stylesheet" href="{{ 'custom.css' | asset_url }}" media="print" onload="this.media='all'">
-
-<header class="shopco-header">
-    <h1>TEST</h1>
-</header>
-
+<h1>Custom-header</h1>
 {% schema %}
 {
-    "name": "Custom ShopCo Header",
-    "class": "custom-header-section",  
-    "max_blocks": 3,  
-    "settings": [
-        
-    ],
-    "blocks": [
+    "name": "Custom header",
+    "settings": [],
+    "presets": [
     {
-      "type": "@app"
+      "name": "Custom Header"
     }
   ]
 }
