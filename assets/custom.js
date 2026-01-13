@@ -1,9 +1,11 @@
 document.querySelectorAll('.announcement-bar__swiper').forEach((slider) => {
-  const speed = Number(slider.dataset.slider_speed);
-  const autoplayEnabled = slider.dataset.slider_autoplay === 'true';
-  const delay = Number(slider.dataset.slider_delay);
+  const speed = Number(slider.dataset.speed);
+  const autoplayEnabled = slider.dataset.autoplay;
+  const delay = Number(slider.dataset.delay);
 
   new Swiper(slider, {
+    observer: true,
+    observeParents: true,  
     speed: speed,
     loop: true,
     autoplay: autoplayEnabled
