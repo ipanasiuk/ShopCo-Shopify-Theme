@@ -8,18 +8,28 @@
  * ------------------------------------------------------------
  */
 {
-  "type": "header",
-  "name": "Header group",
   "sections": {
-    "custom_announcement": {
-      "type": "custom-announcement-bar"
+    "custom-announcement-bar": {
+        "type": "custom-announcement-bar"
     },
-    "custom_header": {
+     "custom-header": {
       "type": "custom-header"
+    },
+     "banner": {
+      "type": "image-banner"
+    },
+    "featured_collection": {
+      "type": "featured-collection"
+    },
+    "custom-footer": {
+        "type":"custom-footer"
     }
   },
   "order": [
-    "custom_announcement",
-    "custom_header"
+    "custom-announcement-bar",
+    "custom-header",
+    "featured_collection",
+    "banner",
+    "custom-footer"
   ]
 }

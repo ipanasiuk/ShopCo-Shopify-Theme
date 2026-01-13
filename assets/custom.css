@@ -2,7 +2,7 @@
     margin: 0 auto;
     padding: 0 50px;
 }
-.shopco-announcement-bar {
+.custom-announcement-bar {
     font-size: 18px;
     line-height: 1;
     padding: 0;
@@ -12,9 +12,11 @@
     text-align: center;
     height: 100%;
 }
+.custom-announcement-bar__text p,
 .custom-announcement-bar p {
     margin: 0;
 }
+.custom-announcement-bar__text a,
 .custom-announcement-bar a {
     position: relative;
     display: inline-block;
@@ -31,6 +33,32 @@
     width: 100%;
     height: 1px;
     background-color: #fff;
+}
+.custom-announcement-bar .swiper-button-next,
+.custom-announcement-bar .swiper-button-prev {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 20px;      
+    bottom: 0!important; 
+    transform: translateY(50%);
+}
+.custom-announcement-bar .swiper-button-next svg,
+.custom-announcement-bar .swiper-button-prev svg {
+    display: none;
+}
+.swiper.announcement-bar__swiper {
+    position: relative;
+}
+.custom-announcement-bar .swiper-button-next {
+    right: 0;    
+    background-image: url('../assets/arrow-down-bold-right.svg');
+}
+.custom-announcement-bar .swiper-button-prev {
+    left: 0;   
+    background-image: url('../assets/arrow-down-bold-left.svg'); 
 }
 @media screen and (min-width: 1500px){
     .container {

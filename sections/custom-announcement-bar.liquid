@@ -1,62 +1,111 @@
-{%- if section.blocks.size == 1 -%}  
-    {% for block in section.blocks %}    
-            <div class="custom-announcement-bar" style="background-color: {{ block.settings.announcement-bg-color }}; padding: {{ block.settings.ab-padding-top }}px 0 {{ block.settings.ab-padding-bottom }}px 0">
-                <div class="container">                 
-                    <div class="custom-announcement-bar__text" style="color: {{ block.settings.announcement-text-color }}">{{ block.settings.announcement-text }}</div>        
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+{%- if section.blocks.size >= 1 -%} 
+<div class="custom-announcement-bar" style="background-color: {{ section.settings.announcement_bg_color }}; padding: {{ section.settings.ab_padding_top  }}px 0 {{ section.settings.ab_padding_bottom }}px 0">
+    <div class="container">
+        {%- if section.blocks.size == 1 -%}  
+            {% for block in section.blocks %}    
+                <div class="custom-announcement-bar__text" style="color: {{ block.settings.announcement_text_color }}">{{ block.settings.announcement_text }}</div>        
+            {% endfor %}
+        {% endif %}
+        {%- if section.blocks.size > 1 -%}  
+            <div 
+                class="swiper announcement-bar__swiper"
+                data-speed="{{ section.settings.slider_speed }}"
+                data-autoplay="{{ section.settings.slider_autoplay }}"
+                data-delay="{{ section.settings.slider_delay }}"
+                >
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                    <div class="swiper-slide" {{ block.shopify_attributes }} style="color: {{ block.settings.announcement_text_color }};">
+                      {{ block.settings.announcement_text }}
+                    </div>
+                    {% endfor %}
                 </div>
-            </div>  
-    {% endfor %}
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        {% endif %}
+    </div>
+</div>
 {% endif %}
-{%- if section.blocks.size > 1 -%}  
-    
-{% endif %}
+
 {% schema %}
 {
-    "name": "Custom Announcement Bar",
-    "class": "shopco-announcement-bar",
-    "max_blocks": 6,
-    "settings": [         
-    ],
-    "blocks": [
+  "name": "Custom Announcement Bar",
+  "class": "shopco-announcement-bar", 
+  "settings": [
+    {
+      "id": "announcement_bg_color",
+      "type": "color",      
+      "default": "#000000",
+      "label": "Announcement Background Color"
+    },
+    {
+      "id": "ab_padding_top",
+      "type": "range",      
+      "min": 5,
+      "max": 45,
+      "default": 10,
+      "label": "Announcement Bar Padding Top"
+    },
+    {
+      "id": "ab_padding_bottom",
+      "type": "range",      
+      "min": 5,
+      "max": 45,
+      "default": 10,
+      "label": "Announcement Bar Padding Bottom",
+    },
+    {
+      "id": "slider_speed",
+      "type": "range",
+      "label": "Slider Speed",
+      "min": 100,
+      "max": 9000,
+      "step": 100,
+      "default": 400
+    },
+    {
+      "id": "slider_autoplay",
+      "type": "checkbox",
+      "label": "Autoplay",
+      "default": true
+    },
+    {
+      "id": "slider_delay",
+      "type": "range",
+      "label": "Autoplay",
+      "min": 100,
+      "max": 9000,
+      "step": 100,
+      "default": 2000
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Announcement"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Announcement Bar Content",
+      "type": "announcement-content",
+      "settings": [
         {
-            "name": "Announcement text",
-            "type": "header",
-            "settings": [
-                {
-                    "id": "announcement-text",
-                    "type": "richtext",
-                    "label": "Announcement Text",                    
-                },
-                {
-                    "id": "announcement-text-color",
-                    "type": "color",
-                    "label": "Announcement Text Color",
-                    "default": "#fff"
-                },
-                {
-                    "id": "announcement-bg-color",
-                    "type": "color",
-                    "label": "Announcement Background Color",
-                    "default": "#000"
-                },
-                {
-                    "id": "ab-padding-top",
-                    "type": "range",
-                    "label": "Announcement Bar Padding Top",
-                    "min":  5,
-                    "max": 45,
-                    "default": 10
-                },
-                {
-                    "id": "ab-padding-bottom",
-                    "type": "range",
-                    "label": "Announcement Bar Padding Bottom",
-                    "min":  5,
-                    "max": 45,
-                    "default": 10
-                }                                    
-            ]
-        }
-    ]
-}    
+          "id": "announcement_text",
+          "type": "richtext",
+          "label": "Announcement Text"
+        },
+        {
+          "id": "announcement_text_color",
+          "type": "color",
+          "label": "Announcement Text Color",
+          "default": "#ffffff"
+        }        
+      ]
+    }
+  ]
+}
 {% endschema %}
