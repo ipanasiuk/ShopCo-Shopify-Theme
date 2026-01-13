@@ -17,36 +17,20 @@
         "announcement_content_jWT6iq": {
           "type": "announcement-content",
           "settings": {
-            "announcement_text": "<p>Test banner text without links</p>",
-            "announcement_text_color": "#ffffff"
-          }
-        },
-        "announcement_content_yMkfMF": {
-          "type": "announcement-content",
-          "settings": {
-            "announcement_text": "<p><a href=\"/blogs/news/blog-post-title\" title=\"Blog post title\">Test 2</a></p>",
-            "announcement_text_color": "#ffffff"
-          }
-        },
-        "announcement_content_ArkwQH": {
-          "type": "announcement-content",
-          "settings": {
-            "announcement_text": "<p>Test 1 <a href=\"/blogs/news\" title=\"News\">Link</a></p>",
+            "announcement_text": "<p>Sign up and get 20% off to your first order. <a href=\"/blogs/news/blog-post-title\" title=\"Blog post title\">Sign Up Now</a></p>",
             "announcement_text_color": "#ffffff"
           }
         }
       },
       "block_order": [
-        "announcement_content_jWT6iq",
-        "announcement_content_yMkfMF",
-        "announcement_content_ArkwQH"
+        "announcement_content_jWT6iq"
       ],
       "settings": {
         "announcement_bg_color": "#000000",
         "ab_padding_top": 10,
         "ab_padding_bottom": 10,
         "slider_speed": 400,
-        "slider_autoplay": true,
+        "slider_autoplay": false,
         "slider_delay": 2000
       }
     },
