@@ -60,6 +60,15 @@
     left: 0;   
     background-image: url('../assets/arrow-down-bold-left.svg'); 
 }
+
+/* Header Styles */
+.site-header__grid {
+    display: grid;
+    grid-template-columns: 25px 170px 1fr 1.5fr 70px;
+    gap: 20px;
+}
+
+
 @media screen and (min-width: 1500px){
     .container {
         width: 1440px;
