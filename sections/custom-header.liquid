@@ -9,8 +9,8 @@
             render 'custom-nav-menu'          
         %}
         <div class="site-header__logo">
-          <a href="{{ routes.root_url }}">
-            <img src="../assets/SHOP.CO.svg" alt="logo" width="126px" height="auto">
+          <a href="{{ routes.root_url }}">            
+            {{ settings.logo | image_url: width: 126 | image_tag }}
           </a>
         </div>
       </div>
