@@ -1,6 +1,16 @@
-.container {
+
+/* Color variables */
+:root {
+    --heading-color:#000;
+    --text-base-color: rgba(0, 0, 0, 0.6);
+    --accent-color: #FF3333;
+}
+body {
+    
+}
+.container {    
     margin: 0 auto;
-    padding: 0 50px;
+    padding: 0 16px;
 }
 .custom-announcement-bar {
     font-size: 18px;
@@ -62,43 +72,72 @@
 }
 
 /* Header Styles */
-.site-header__grid {
-    display: grid;
-    grid-template-columns: 25px 170px 1fr 1.5fr 70px;
-    gap: 20px;
+.site-header .container {
+    position: relative;
 }
-.site-header__nav-trigger {
-    width: 24px;
-    height: 24px;
+.site-header__container {    
+    display: flex;
+    justify-content: space-between;
+    gap: 12px; 
+    align-items: center;
+    line-height: 1;
+    padding: 20px 0;
 }
-.site-header__logo {
-        width: 160px;
-    }
-.site-header__logo img {
-    width: 100%;
-    height: auto;
-}
-.site-header-nav {}
 
-@media screen and (min-width: 1500px){
-    .container {
-        width: 1440px;
-    }
+.site-header__left,
+.site-header__right {
+    display: flex;
+    align-items: center;
+    align-self: center;
 }
-@media screen and (min-width: 768px){
-    .site-header__nav-trigger {
-        display: none;
-    }
-    .site-header__grid {       
-        grid-template-columns: 170px 1fr 1.5fr 70px;        
-    }
-    .site-header-nav__list  {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    
+
+.site-header__right button {
+    display: inline-flex;
+    border-style: none;
+    background-color: transparent;
+    padding: 0;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.site-header__right button:last-child{
+    margin-right: 0;
+}
+
+.site-header__logo a {
+    display: flex;
+    align-items: center;
+}
+
+.site-header-search__wrapper {
+    display: none; 
+}
+.site-header-search__wrapper.open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+}
+.site-header-search__iconClose {
+    display: block;
+    width: 30px;
+    height: 30px;
+}
+
+/* Mobile drawer styles */
+.site-header__icon {
+    width: 24px;
+    height: 24px;    
+    margin: 3px 16px 0 0;
+}
+.site-header__icon span {
+    display: flex;
+    align-items: center;
+}
+.menu-drawer__menu {
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
 }
