@@ -5,33 +5,10 @@
     --text-base-color: rgba(0, 0, 0, 0.6);
     --accent-color: #FF3333;
 }
-/* Fonts */
-@font-face {
-    font-family: 'IntegralCF-Bold';
-    src: url('{{ "Integralcf-Bold.woff" | asset_url }}') format('woff');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Satoshi-Bold';
-    src: url('{{ "Satoshi-Bold.woff" | asset_url }}') format('woff');
-    font-weight: 700;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Satoshi-Medium';
-    src: url('{{ "Satoshi-Medium.woff" | asset_url }}') format('woff');
-    font-weight: 500;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Satoshi-Regular';
-    src: url('{{ "Satoshi-Regular.woff" | asset_url }}') format('woff');
-    font-weight: 400;
-    font-style: normal;
-}
+
 body {
     font-family: "Satoshi-Regular", sans-serif; 
+    font-size: 16px;
 }
 h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
     font-family: "IntegralCF-Bold", sans-serif; 
@@ -41,8 +18,8 @@ h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
     padding: 0 16px;
 }
 .custom-announcement-bar {
-    font-size: 18px;
-    line-height: 1;
+    font-size: 1.2rem;
+    line-height: 1.2;
     padding: 0;
     margin: 0;
 }
@@ -53,6 +30,7 @@ h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
 .custom-announcement-bar__text p,
 .custom-announcement-bar p {
     margin: 0;
+    
 }
 .custom-announcement-bar__text a,
 .custom-announcement-bar a {
@@ -97,6 +75,17 @@ h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
 .custom-announcement-bar .swiper-button-prev {
     left: 0;   
     background-image: url('../assets/arrow-down-bold-left.svg'); 
+}
+.swiper-button-next,
+.swiper-button-prev {
+  visibility: hidden;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-next,
+  .swiper-button-prev {
+    visibility: visible;
+  }
 }
 
 /* Header Styles */
@@ -168,4 +157,11 @@ h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5 {
     list-style: none;
     margin: 0;
     padding-left: 0;
+}
+
+/* Media queries */
+@media screen and (min-width: 768px ){
+    .custom-announcement-bar {
+        font-size: 1.4rem;
+    }
 }
