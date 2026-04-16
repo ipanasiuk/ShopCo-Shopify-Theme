@@ -45,18 +45,3 @@ initSwiper();
 document.addEventListener('shopify:section:load', (e) => {
   initSwiper(e.target);
 });
-
-// Search button mobile
-
-const searchBtnMobile = document.querySelector('.site-header-search__icon-mobile')
-const searchBtnCloseMobile = document.querySelector('.site-header-search__btnClose')
-const mobileSearchWrapper = document.querySelector('.site-header-search__wrapper')
-
-searchBtnMobile.addEventListener('click', () => {
-  mobileSearchWrapper.classList.add('open')
-})
-
-searchBtnCloseMobile.addEventListener('click', () => {
-  mobileSearchWrapper.classList.remove('open')
-})
-
