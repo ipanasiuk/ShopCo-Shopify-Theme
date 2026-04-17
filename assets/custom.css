@@ -158,6 +158,9 @@ h1, h2 .h1, .h2 {
     justify-content: flex-start;
     gap: 12px;
 }
+.site-header .cart-count-bubble {
+    left: 1.7rem;
+}
 .site-header .site-header__cart {
     height: 24px;
     width: 24px;
