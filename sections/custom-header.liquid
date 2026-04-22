@@ -5,89 +5,219 @@
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+{% liquid
+  assign header_tag = 'div'
+
+  if section.settings.custom_sticky_header_type != 'none'
+    assign header_tag = 'sticky-header'
+  endif
+%}
+<{{ header_tag }}
+  {% if header_tag == 'sticky-header' %}
+    data-sticky-type="{{ section.settings.custom_sticky_header_type }}"
+  {% endif %}
+>
 <div class="header-wrapper header-wrapper--border-bottom">
-<header class="site-header section-header {% if section.settings.header_menu != blank %} header--has-menu{% endif %}">
-  <div class="container">
-    <div class="site-header__container">
-      <div class="site-header__left">
-        <div class="site-header__menu-mobile">
-          {%- liquid                 
-            render 'custom-nav-menu'          
-          %}
-        </div>        
-        <div class="site-header__logo">
-          <a href="{{ routes.root_url }}">            
-            {{ settings.logo | image_url: width: 126 | image_tag }}
-          </a>
-        </div>
-        <div class="site-header__menu-desktop">
-          {%- liquid                 
-            render 'custom-header-dropdown'          
-          %}
-        </div>
-      </div>
-      <div class="site-header__right">
-        <div class="site-header__search-desktop">
-           {%-  render 'desktop-search'   %}
-        </div>
-        <div class="site-header__search-mobile">
-          {%  render 'custom-header-search', input_id: 'Search-In-Modal-1' %}
-        </div>        
-        <div class="site-header__customer site-header-customer">
-          <div class="site-header__cart">
-            <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-              {% if cart == empty %}
-                <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
-              {% else %}
-                <span class="svg-wrapper cart-not-empty">{{ 'icon-cart.svg' | inline_asset_content }}</span>
-              {% endif %}
-              <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-              {%- if cart != empty -%}
-                <div class="cart-count-bubble">
-                  {%- if cart.item_count < 100 -%}
-                    <span aria-hidden="true">{{ cart.item_count }}</span>
-                  {%- endif -%}
-                  <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-                </div>
-              {%- endif -%}
+  <header class="site-header {% if section.settings.header_menu != blank %} header--has-menu{% endif %}">
+    <div class="container">
+      <div class="site-header__container">
+        <div class="site-header__left">
+          <div class="site-header__menu-mobile">
+            {%- liquid                 
+              render 'custom-nav-menu'          
+            %}
+          </div>        
+          <div class="site-header__logo">
+            <a href="{{ routes.root_url }}">            
+              {{ settings.logo | image_url: width: 126 | image_tag }}
             </a>
           </div>
-          <div class="site-header__account">
-            {%- if shop.customer_accounts_enabled -%}
-              <a
-                href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
-                rel="nofollow"
-              >
-                {%- if section.settings.enable_customer_avatar -%}
-                  <account-icon>
-                    {%- if customer and customer.has_avatar? -%}
-                      {{ customer | avatar }}
-                    {%- else -%}
-                      <span class="svg-wrapper">{{ 'iconUser.svg' | inline_asset_content }}</span>
-                    {%- endif -%}
-                  </account-icon>
-                {%- else -%}
-                  <span class="svg-wrapper">{{ 'iconUser.svg' | inline_asset_content }}</span>
-                {%- endif -%}
-                <span class="visually-hidden">
-                  {%- liquid
-                    if customer
-                      echo 'customer.account_fallback' | t
-                    else
-                      echo 'customer.log_in' | t
-                    endif
-                  -%}
-                </span>
-              </a>
-            {%- endif -%}
+          <div class="site-header__menu-desktop">
+            {%- liquid                 
+              render 'custom-header-dropdown'          
+            %}
           </div>
-        </div>  
-      </div>      
-    </div>
-  </div>        
-</header>
+        </div>
+        <div class="site-header__right">
+          <div class="site-header__search-desktop">
+            {%-  render 'desktop-search'   %}
+          </div>
+          <div class="site-header__search-mobile">
+            {%  render 'custom-header-search', input_id: 'Search-In-Modal-1' %}
+          </div>        
+          <div class="site-header__customer site-header-customer">
+            <div class="site-header__cart">
+              <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
+                {% if cart == empty %}
+                  <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+                {% else %}
+                  <span class="svg-wrapper cart-not-empty">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+                {% endif %}
+                <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+                {%- if cart != empty -%}
+                  <div class="cart-count-bubble">
+                    {%- if cart.item_count < 100 -%}
+                      <span aria-hidden="true">{{ cart.item_count }}</span>
+                    {%- endif -%}
+                    <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+                  </div>
+                {%- endif -%}
+              </a>
+            </div>
+            <div class="site-header__account">
+              {%- if shop.customer_accounts_enabled -%}
+                <a
+                  href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                  class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}"
+                  rel="nofollow"
+                >
+                  {%- if section.settings.enable_customer_avatar -%}
+                    <account-icon>
+                      {%- if customer and customer.has_avatar? -%}
+                        {{ customer | avatar }}
+                      {%- else -%}
+                        <span class="svg-wrapper">{{ 'iconUser.svg' | inline_asset_content }}</span>
+                      {%- endif -%}
+                    </account-icon>
+                  {%- else -%}
+                    <span class="svg-wrapper">{{ 'iconUser.svg' | inline_asset_content }}</span>
+                  {%- endif -%}
+                  <span class="visually-hidden">
+                    {%- liquid
+                      if customer
+                        echo 'customer.account_fallback' | t
+                      else
+                        echo 'customer.log_in' | t
+                      endif
+                    -%}
+                  </span>
+                </a>
+              {%- endif -%}
+            </div>
+          </div>  
+        </div>      
+      </div>
+    </div>        
+  </header>
 </div>
+</{{ header_tag }}>
+
+{% javascript %}
+  class StickyHeader extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.header = document.querySelector('.section-header');
+      this.headerIsAlwaysSticky =
+        this.getAttribute('data-sticky-type') === 'always' ||
+        this.getAttribute('data-sticky-type') === 'reduce-logo-size';
+      this.headerBounds = {};
+
+      this.setHeaderHeight();
+
+      window.matchMedia('(max-width: 990px)').addEventListener('change', this.setHeaderHeight.bind(this));
+
+      if (this.headerIsAlwaysSticky) {
+        this.header.classList.add('shopify-section-header-sticky');
+      }
+
+      this.currentScrollTop = 0;
+      this.preventReveal = false;
+      this.predictiveSearch = this.querySelector('predictive-search');
+
+      this.onScrollHandler = this.onScroll.bind(this);
+      this.hideHeaderOnScrollUp = () => (this.preventReveal = true);
+
+      this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.addEventListener('scroll', this.onScrollHandler, false);
+
+      this.createObserver();
+    }
+
+    setHeaderHeight() {
+      document.documentElement.style.setProperty('--header-height', `${this.header.offsetHeight}px`);
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.removeEventListener('scroll', this.onScrollHandler);
+    }
+
+    createObserver() {
+      let observer = new IntersectionObserver((entries, observer) => {
+        this.headerBounds = entries[0].intersectionRect;
+        observer.disconnect();
+      });
+
+      observer.observe(this.header);
+    }
+
+    onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        this.header.classList.add('scrolled-past-header');
+        if (this.preventHide) return;
+        requestAnimationFrame(this.hide.bind(this));
+      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        this.header.classList.add('scrolled-past-header');
+        if (!this.preventReveal) {
+          requestAnimationFrame(this.reveal.bind(this));
+        } else {
+          window.clearTimeout(this.isScrolling);
+
+          this.isScrolling = setTimeout(() => {
+            this.preventReveal = false;
+          }, 66);
+
+          requestAnimationFrame(this.hide.bind(this));
+        }
+      } else if (scrollTop <= this.headerBounds.top) {
+        this.header.classList.remove('scrolled-past-header');
+        requestAnimationFrame(this.reset.bind(this));
+      }
+
+      this.currentScrollTop = scrollTop;
+    }
+
+    hide() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+      this.closeMenuDisclosure();
+      this.closeSearchModal();
+    }
+
+    reveal() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.add('shopify-section-header-sticky', 'animate');
+      this.header.classList.remove('shopify-section-header-hidden');
+    }
+
+    reset() {
+      if (this.headerIsAlwaysSticky) return;
+      this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+    }
+
+    closeMenuDisclosure() {
+      this.disclosures = this.disclosures || this.header.querySelectorAll('header-menu');
+      this.disclosures.forEach((disclosure) => disclosure.close());
+    }
+
+    closeSearchModal() {
+      this.searchModal = this.searchModal || this.header.querySelector('details-modal');
+      this.searchModal.close(false);
+    }
+  }
+
+  customElements.define('sticky-header', StickyHeader);
+{% endjavascript %}
+
+  
+
 {%- if request.page_type == 'index' -%}
   {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
@@ -108,6 +238,7 @@
 {% schema %}
 {
   "name": "Custom header",
+  "class": "section-header",
   "settings": [
     {
       "type": "link_list",
@@ -121,7 +252,24 @@
       "default": true,
       "label": "t:sections.header.settings.enable_customer_avatar.label",
       "info": "t:sections.header.settings.enable_customer_avatar.info"
-    }
+    },
+    {
+      "type": "select",
+      "id": "custom_sticky_header_type",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },     
+        {
+          "value": "always",
+          "label": "Always"
+        },                  
+      ],
+      "default": "always",
+      "label": "Always"
+    },
+
   ],
   "presets": [
   {
