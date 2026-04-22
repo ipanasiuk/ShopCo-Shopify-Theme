@@ -10,19 +10,29 @@
   <div class="container">
     <div class="site-header__container">
       <div class="site-header__left">
-        {%- liquid                 
+        <div class="site-header__menu-mobile">
+          {%- liquid                 
             render 'custom-nav-menu'          
-        %}
+          %}
+        </div>        
         <div class="site-header__logo">
           <a href="{{ routes.root_url }}">            
             {{ settings.logo | image_url: width: 126 | image_tag }}
           </a>
         </div>
+        <div class="site-header__menu-desktop">
+          {%- liquid                 
+            render 'custom-header-dropdown'          
+          %}
+        </div>
       </div>
       <div class="site-header__right">
+        <div class="site-header__search-desktop">
+           {%-  render 'desktop-search'   %}
+        </div>
         <div class="site-header__search-mobile">
           {%  render 'custom-header-search', input_id: 'Search-In-Modal-1' %}
-        </div>
+        </div>        
         <div class="site-header__customer site-header-customer">
           <div class="site-header__cart">
             <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
