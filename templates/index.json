@@ -9,43 +9,14 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products  - test shop",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+    "custom_image_banner_M9R6Br": {
+      "type": "custom-image-banner",
+      "name": "ShopCo Image Banner",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "bottom-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "scheme-3",
-        "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
+        "main_banner_img": "shopify://shop_images/MainBanner.jpg",
+        "image_overlay_opacity": 0,
+        "icon-large-color": "#000000",
+        "icon-small-color": "#000000"
       }
     },
     "featured_collection": {
@@ -78,7 +49,7 @@
     }
   },
   "order": [
-    "image_banner",
+    "custom_image_banner_M9R6Br",
     "featured_collection"
   ]
 }
