@@ -1,0 +1,89 @@
+<style>
+  
+</style>
+<div class="main-banner">
+   <div class="main-banner__wrapper">
+    <div class="main-banner__content">    
+      <div class="container">
+        <h1 class="main-banner__heading">FIND CLOTHES <br>THAT MATCHES<br> YOUR STYLE</h1>
+        <p class="main-banner__text">Browse through our diverse range of meticulously crafted garments, designed <br> to bring out your individuality and cater to your sense of style.</p>
+        <div class="main-banner__buttons">
+            <a href="#">Shop Now</a>
+        </div>
+        <div class="main-banner__counter">
+          <div class="main-banner__couner-item">
+            <p class="main-banner__count">200+</p>
+            <p class="main-banner__description">International Brands</p>
+          </div>
+          <div class="main-banner__couner-item">
+            <p class="main-banner__count">2,000+</p>
+            <p class="main-banner__description">High-Quality Products</p>
+          </div>
+          <div class="main-banner__couner-item">
+            <p class="main-banner__count">30,000+</p>
+            <p class="main-banner__description">Happy Customers</p>
+          </div>
+        </div> 
+      </div>      
+    </div>
+    <div class="main-banner__background" style="background-image: url({{ section.settings.main_banner_img | image_url }}); background-repeat: no-repeat;">
+      <div class="container">
+        <div class="main-banner__icon-large">{{- 'icon-star-large.svg' | inline_asset_content -}}</div>
+        <div class="main-banner__icon-small">{{- 'icon-star-small.svg' | inline_asset_content -}}</div>
+      </div>      
+    </div>     
+  </div>  
+</div>
+
+{% schema %}
+{
+  "name": "Main Image Banner",
+  "class": "section-image-banner",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [    
+    {
+        "type": "image_picker",
+        "id": "main_banner_img",
+        "label": "Main Banner Image"
+    },
+       
+    {
+      "type": "color",
+      "id": "icon-large-color",
+      "label": "Banner Icon Large Color (optional)",
+      "default": "#000"
+    },    
+     {
+      "type": "color",
+      "id": "icon-small-color",
+      "label": "Banner Icon Small Color (optional)",
+      "default": "#000"
+    },   
+
+  ],
+  "blocks": [
+    {
+        "type": "heading",
+        "name": "Main banner header",
+        "limit": 1,
+        "settings": [
+            {
+                "id": "main-banner-header",
+                "type": "richtext",
+                "label": "Main Banner Header"
+            }
+        ]
+    }
+  ],
+  "presets": [
+  {
+    "name": "Main Image Banner",
+    "blocks": [
+        
+    ]
+  }
+]
+}
+{% endschema %}
